@@ -39,7 +39,7 @@ public class UncertaintyCalc {
         
         double num = Math.abs(v2 - v1);
         double den = (v2 + v1)/2;
-        dobule percentDiff = (num/den) * 100;
+        double percentDiff = (num/den) * 100;
         System.out.printf("Percentage difference: %.6f", percentDiff);
     }
 
