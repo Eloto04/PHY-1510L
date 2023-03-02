@@ -15,11 +15,58 @@ public class UncertaintyCalc {
     public static void main(String[] args){
         Scanner scnr = new Scanner(System.in);
 
-        percentUncertainty(scnr);
+        /* User may use methods as needed/desired. */
+
+        //momentumUncertainty(scnr);
+        //percentDiff(scnr);
+        //percentUncertainty(scnr);
+    }
+
+
+    
+    /** Prints the uncertainty in a measurement of momentum given
+     *  mass with uncertainty and speed with uncertainty.
+     * 
+     *  To be used for printing purposes. Value is not saved.
+     *  @param scnr
+     *  @version 1
+     */
+    public static void momentumUncertainty(Scanner scnr) {
+        
+        /* TO-DO: add compatibility for different units */
+
+        System.out.println("Enter mass value (g): ");
+        double mass = scnr.nextDouble();
+        System.out.println("Enter mass uncertainty value (g): ");
+        double massUncertainty = scnr.nextDouble();
+        System.out.println("Enter speed value (m/s): ");
+        double speed = scnr.nextDouble();
+        System.out.println("Enter speed uncertainty value (m/s): ");
+        double speedUncertainty = scnr.nextDouble();
+
+        double pMax = (mass + massUncertainty) * (speed + speedUncertainty);
+        double pMin = (mass - massUncertainty) * (speed - speedUncertainty);
+        
+        double momentumUncertainty = (pMax - pMin) / 2;
+        System.out.printf("Momentum uncertainty: %.7f g * (m/s)", momentumUncertainty);
 
     }
 
+    
+    /** Returns the uncertainty in a measurement of momentum given
+     *  mass with uncertainty and speed with uncertainty.
+     * 
+     *  To be used with desired units of user's choice. Value can be saved.
+     *  @param mass The mass value of an object.
+     *  @param massUncertainty The uncertainty in the mass value of an object.
+     *  @param speed The speec value of an object.
+     *  @param speedUncertainty The uncertainty in the speed value of an object.
+     *  @return double The uncertainty in the determined momentum value of an object.
+     */
     public static double momentumUncertainty(double mass, double massUncertainty, double speed, double speedUncertainty) {
+        
+        /* TO-DO: add compatibility for different units */
+        
         double pMax = (mass + massUncertainty) * (speed + speedUncertainty);
         double pMin = (mass - massUncertainty) * (speed - speedUncertainty);
 
@@ -81,6 +128,8 @@ public class UncertaintyCalc {
         double percentUncertainty = Math.abs((percentMax - percentMin)) / 2;
         System.out.printf("Percentage uncertainty: %.6f \n", percentUncertainty);
     }
+
+    /* TO-DO: Javadoc comments for kineticEnergy & kineticEnergyUncertainty methods */
 
     public static double kineticEnergy(Scanner scnr){
         System.out.println("Enter mass value (g): ");
